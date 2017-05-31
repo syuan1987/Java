@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.syuan.jnshu.dao.EntryFormMapper" >
+  <resultMap id="BaseResultMap" type="cn.syuan.jnshu.model.EntryForm" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="BIGINT" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="onlineclass" property="onlineclass" jdbcType="VARCHAR" />
+    <result column="onlineno" property="onlineno" jdbcType="VARCHAR" />
+    <result column="recommender" property="recommender" jdbcType="VARCHAR" />
+    <result column="censor" property="censor" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.syuan.jnshu.model.EntryFormWithBLOBs" extends="BaseResultMap" >
+    <result column="dailylink" property="dailylink" jdbcType="LONGVARCHAR" />
+    <result column="aim" property="aim" jdbcType="LONGVARCHAR" />
+    <result column="wherefrom" property="wherefrom" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, update_time, name, qq, major, start_date, school, onlineclass, onlineno, 
+    recommender, censor
+  </sql>
+  <sql id="Blob_Column_List" >
+    dailylink, aim, wherefrom
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from entry_form
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from entry_form
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.syuan.jnshu.model.EntryFormWithBLOBs" >
+    insert into entry_form (id, create_time, update_time, 
+      name, qq, major, start_date, 
+      school, onlineclass, onlineno, 
+      recommender, censor, dailylink, 
+      aim, wherefrom)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{startDate,jdbcType=BIGINT}, 
+      #{school,jdbcType=VARCHAR}, #{onlineclass,jdbcType=VARCHAR}, #{onlineno,jdbcType=VARCHAR}, 
+      #{recommender,jdbcType=VARCHAR}, #{censor,jdbcType=VARCHAR}, #{dailylink,jdbcType=LONGVARCHAR}, 
+      #{aim,jdbcType=LONGVARCHAR}, #{wherefrom,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.syuan.jnshu.model.EntryFormWithBLOBs" >
+    insert into entry_form
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="onlineclass != null" >
+        onlineclass,
+      </if>
+      <if test="onlineno != null" >
+        onlineno,
+      </if>
+      <if test="recommender != null" >
+        recommender,
+      </if>
+      <if test="censor != null" >
+        censor,
+      </if>
+      <if test="dailylink != null" >
+        dailylink,
+      </if>
+      <if test="aim != null" >
+        aim,
+      </if>
+      <if test="wherefrom != null" >
+        wherefrom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=BIGINT},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineclass != null" >
+        #{onlineclass,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineno != null" >
+        #{onlineno,jdbcType=VARCHAR},
+      </if>
+      <if test="recommender != null" >
+        #{recommender,jdbcType=VARCHAR},
+      </if>
+      <if test="censor != null" >
+        #{censor,jdbcType=VARCHAR},
+      </if>
+      <if test="dailylink != null" >
+        #{dailylink,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="aim != null" >
+        #{aim,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wherefrom != null" >
+        #{wherefrom,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.syuan.jnshu.model.EntryFormWithBLOBs" >
+    update entry_form
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=BIGINT},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineclass != null" >
+        onlineclass = #{onlineclass,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineno != null" >
+        onlineno = #{onlineno,jdbcType=VARCHAR},
+      </if>
+      <if test="recommender != null" >
+        recommender = #{recommender,jdbcType=VARCHAR},
+      </if>
+      <if test="censor != null" >
+        censor = #{censor,jdbcType=VARCHAR},
+      </if>
+      <if test="dailylink != null" >
+        dailylink = #{dailylink,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="aim != null" >
+        aim = #{aim,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="wherefrom != null" >
+        wherefrom = #{wherefrom,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.syuan.jnshu.model.EntryFormWithBLOBs" >
+    update entry_form
+    set create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=BIGINT},
+      school = #{school,jdbcType=VARCHAR},
+      onlineclass = #{onlineclass,jdbcType=VARCHAR},
+      onlineno = #{onlineno,jdbcType=VARCHAR},
+      recommender = #{recommender,jdbcType=VARCHAR},
+      censor = #{censor,jdbcType=VARCHAR},
+      dailylink = #{dailylink,jdbcType=LONGVARCHAR},
+      aim = #{aim,jdbcType=LONGVARCHAR},
+      wherefrom = #{wherefrom,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.syuan.jnshu.model.EntryForm" >
+    update entry_form
+    set 
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=BIGINT},
+      school = #{school,jdbcType=VARCHAR},
+      onlineclass = #{onlineclass,jdbcType=VARCHAR},
+      onlineno = #{onlineno,jdbcType=VARCHAR},
+      recommender = #{recommender,jdbcType=VARCHAR},
+      censor = #{censor,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
