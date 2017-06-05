@@ -109,7 +109,7 @@ public class StudentController {
         stu.setUpdate_at(updateTime);
         studentService.updateStudentById(stu);
         System.out.println("----->"+stu);
-        log.info("修改成功");
+        log.info("修改成功！");
         return "redirect:/student/list";
     }
 }
