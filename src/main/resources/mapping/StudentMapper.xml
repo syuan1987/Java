@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jnshu.dao.StudentDao">
+
+    <!--<resultMap id=" StudentBaseMap" type="com.jnshu.model.Student">-->
+        <!--<id column="id" property="id" jdbcType="BIGINT"/>-->
+        <!--<result column="stu_name" property="stu_name" jdbcType="VARCHAR"/>-->
+        <!--<result column="stu_pwd" property="stu_pwd" jdbcType="VARCHAR"/>-->
+        <!--<result column="stu_QQ" property="stu_QQ" jdbcType="VARCHAR"/>-->
+        <!--<result column="course" property="course" jdbcType="VARCHAR"/>-->
+        <!--<result column="stu_date" property="stu_date" jdbcType="VARCHAR"/>-->
+        <!--<result column="school" property="school" jdbcType="VARCHAR"/>-->
+        <!--<result column="stu_ID" property="stu_ID" jdbcType="BIGINT"/>-->
+        <!--<result column="daily_link" property="daily_link" jdbcType="VARCHAR"/>-->
+        <!--<result column="hope" property="hope" jdbcType="VARCHAR"/>-->
+        <!--<result column="yinjian" property="yinjian" jdbcType="VARCHAR"/>-->
+        <!--<result column="shenhe" property="shenhe" jdbcType="VARCHAR"/>-->
+        <!--<result column="create_at" property="create_at" jdbcType="BIGINT"/>-->
+        <!--<result column="update_at" property="update_at" jdbcType="BIGINT"/>-->
+    <!--</resultMap>-->
+
+    <!--登陆查询匹配信息-->
+    <select id="Login" resultType="com.jnshu.model.Student" >
+        SELECT * FROM  jnshu WHERE stu_name=#{stu_name} AND stu_pwd=#{stu_pwd}
+    </select>
+
+    <!--查看所有学生-->
+    <select id="selectAllStudent"  resultType="com.jnshu.model.Student" >
+        SELECT * FROM jnshu
+    </select>
+
+    <!--添加学生-->
+    <insert id="addStudent" useGeneratedKeys="true" keyProperty="id" parameterType="com.jnshu.model.Student">
+        INSERT INTO jnshu  (stu_name,stu_pwd,stu_QQ,course,stu_date,school,stu_ID,daily_link,hope,yinjian,shenhe,create_at)
+        VALUE (#{stu_name},#{stu_pwd},#{stu_QQ},#{course},#{stu_date},#{school},#{stu_ID},#{daily_link},#{hope},#{yinjian},#{shenhe},#{create_at})
+    </insert>
+
+    <!--删除学生信息-->
+    <delete id="deleteStudentById" parameterType="int">
+        DELETE FROM jnshu WHERE  id=#{id}
+    </delete>
+
+    <!--修改学生信息-->
+    <update id="updateStudentById" parameterType="com.jnshu.model.Student">
+        UPDATE jnshu
+        SET stu_name=#{Student.stu_name},stu_pwd=#{Student.stu_pwd},stu_QQ=#{Student.stu_QQ},course=#{Student.course},stu_date=#{Student.stu_date},school=#{Student.school},
+        stu_ID=#{Student.stu_ID},daily_link=#{Student.daily_link},yinjian=#{Student.yinjian},shenhe=#{Student.shenhe},update_at=#{Student.update_at}
+        WHERE id=#{Student.id}
+    </update>
+</mapper>
