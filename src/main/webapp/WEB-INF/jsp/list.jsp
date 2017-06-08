@@ -16,7 +16,7 @@
     <title>学员信息列表</title>
 </head>
 <body style="align-content: center">
-<h1 style="text-align: center">学员信息列表<a href="/student/add">添加</a></h1>
+<h1 style="text-align: center">学员信息列表<a href="/Task_2/student/add">添加</a></h1>
 <table width="100%" border=1px  cellpadding="1" cellspacing="1">
     <tr>
         <th>&nbsp;id</th>
@@ -57,8 +57,8 @@
         <jsp:setProperty property="time" name="updateTime" value="${stu.update_at}"/>
         <td><fmt:formatDate value="${updateTime}" pattern="yyyy-MM-dd" /></td>
         <td>
-            <a href="/student/delete/${stu.id}">删除</a>
-            <a href="/student/update/${stu.id}">修改</a>
+            <a href="/Task_2/student/delete/${stu.id}">删除</a>
+            <a href="/Task_2/student/update/${stu.id}">修改</a>
         </td>
     </tr>
     </c:forEach>
